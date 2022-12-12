@@ -1,3 +1,4 @@
+liquibase.properties
 *.txt
 HELP.md
 target/
@@ -32,3 +33,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
