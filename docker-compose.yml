@@ -3,7 +3,8 @@ version: '3.8'
 services:
   app:
     container_name: app
-    image: atrilos/telegram-bot@sha256:dd93ca455c74291ade110a0caf7a6accb102917476d9039c248eb2407da4c4cf
+    image: atrilos/telegram-bot@sha256:c9e2827d9d2ae229f9b837053c308d694aec3e4f51a6fd8ca50431569108727d
+    pull_policy: always
     restart: always
     ports:
       - "8081:28852"

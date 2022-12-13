@@ -15,3 +15,11 @@ CREATE TABLE notification_task
 -- changeset atrilos:2
 CREATE INDEX notify_date_time_idx ON notification_task USING hash (notify_date_time);
 -- rollback drop index notify_date_time_idx;
+
+-- changeset atrilos:3
+DROP INDEX notify_date_time_idx;
+-- rollback CREATE INDEX notify_date_time_idx ON notification_task USING hash (notify_date_time);
+
+-- changeset atrilos:4
+CREATE INDEX notify_date_time_idx ON notification_task (notify_date_time);
+-- rollback drop index notify_date_time_idx;

@@ -11,9 +11,8 @@ spring:
   jpa:
     properties:
       hibernate:
-        generate_statistics: true
+        generate_statistics: false
         format_sql: true
-    defer-datasource-initialization: false
     hibernate:
       ddl-auto: validate
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
