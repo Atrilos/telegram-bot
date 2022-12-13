@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: app
+    image: atrilos/telegram-bot@sha256:c9e2827d9d2ae229f9b837053c308d694aec3e4f51a6fd8ca50431569108727d
+    pull_policy: always
+    restart: always
+    ports:
+      - "8081:28852"
+    environment:
+      TBOT3_URL: jdbc:postgresql://db:5432/tgbot3_db
+      TBOT3_DB_USERNAME: ${TBOT3_DB_USERNAME}
+      TBOT3_DB_PASSWORD: ${TBOT3_DB_PASSWORD}
+      TBOT3_USERNAME: ${TBOT3_USERNAME}
+      TBOT3_TOKEN: ${TBOT3_TOKEN}
+      SPRING_PROFILES_ACTIVE: docker
+      TZ: GMT+7
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres@sha256:d162c381b33840af842d1769cd95bca8b2a40b10bc256a41c3d4c1418a1bf56d
+    restart: always
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_DB: tgbot3_db
+      POSTGRES_USER: ${TBOT3_DB_USERNAME}
+      POSTGRES_PASSWORD: ${TBOT3_DB_PASSWORD}
+      TZ: GMT-7
+      PGTZ: GMT-7
+    volumes:
+      - db:/data/postgres
+
+volumes:
+  db:
